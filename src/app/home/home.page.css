@@ -1,0 +1,31 @@
+.welcome-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  margin: 20px 0px;
+  padding: 10px;
+  margin-top: 25px;
+}
+
+.welcome-title {
+  color: #FDF300;
+  color: rgb(255, 230, 0);
+  font-weight: bolder; 
+}
+
+.welcome-subtitle {
+
+}
+
+
+
+.logo {
+  width: 250px;
+}
+
+
+
+

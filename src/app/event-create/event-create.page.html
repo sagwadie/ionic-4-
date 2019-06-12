@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>New Event</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button ion-button icon-only routerLink="/home">
+        <ion-icon name="close"></ion-icon>X
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+<ion-content padding>
+
+  <!-- Info Wrapper -->
+<div class="info-wrapper">
+  <h3>Create a New Event</h3>
+  <p>You can Create & Share a new Event an let people register to attend the event.</p>
+</div>
+<!-- /Info Wrapper -->
+
+<ion-list>
+
+  <!-- Event Name -->
+  <ion-item>
+    <ion-label position="stacked">Event Name</ion-label>
+    <ion-input  
+      [(ngModel)]="eventName" 
+      type="text" 
+      placeholder="What's the event name?"
+      title="What's the event name?">
+    </ion-input>
+  </ion-item>
+
+  <!-- Event Description -->
+  <ion-item>
+    <ion-label position="stacked">Event Description</ion-label>
+    <ion-textarea
+      dir="auto"
+      [(ngModel)]="eventDesc" 
+      type="text" 
+      #msgInput rows="6" maxLength="15000"
+      placeholder="Write an event description."
+      title="event description">
+    </ion-textarea>
+  </ion-item>
+
+
+
+   
+
+  <!-- Event Description value="2012-12-15T13:47:20.789"-->
+  <ion-item>
+  <ion-label position="stacked">Event Date</ion-label>
+  <ion-icon name="md-calendar"></ion-icon>
+  <ion-datetime
+  min="2018" max="2023-12-31" 
+  display-format="MMM DD, YYYY HH:mm"
+  [(ngModel)]="eventDate"
+  placeholder="Set Event Date">
+  </ion-datetime>
+  <ion-icon name="md-calendar" item-end></ion-icon>
+</ion-item>
+
+
+<!-- Event Description -->
+<ion-item (click)="toggle_card = !toggle_card">
+<ion-label position="stacked">Price & Cost</ion-label>
+</ion-item>
+ <ion-card>
+
+<ion-card-content *ngIf="toggle_card">
+
+  <ion-item>
+    <ion-label position="stacked">Price</ion-label>
+    <ion-input [(ngModel)]="eventPrice" type="number" placeholder="How much will guests pay?">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Cost</ion-label>
+    <ion-input 
+      [(ngModel)]="eventCost" 
+      type="number" 
+      placeholder="How much are you spending?">
+    </ion-input>
+  </ion-item>
+
+  </ion-card-content>
+
+  </ion-card>
+
+</ion-list>
+
+<ion-button
+  class="create-product-btn" 
+  expand="block" 
+  (click)="createEvent(eventName, eventDesc, eventDate, eventCost)"
+  [disabled]="!eventName || !eventDesc ||!eventDate">
+    Create Event
+</ion-button>
+
+</ion-content>
+

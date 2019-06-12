@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">X
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+<ion-card 
+      tappable 
+      *ngFor="let event of eventList" 
+      routerLink="/event-detail/{{ event.id }}">
+    <!--<ion-img src="/assets/myImg.png"></ion-img>-->
+    <ion-img src="https://firebasestorage.googleapis.com/v0/b/event-ee729.appspot.com/o/logo-the-station.png?alt=media&token=daf3eb07-a76b-4919-a76f-aba93726ae6f" class="logo"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>Date: {{event?.date}}</ion-card-subtitle>
+      <ion-card-subtitle>Ticket: <strong class="price">${{event?.price}}</strong> / <span class="price-name">Free</span></ion-card-subtitle>
+ 
+        <ion-card-title>{{event?.name}}</ion-card-title>
+        
+    </ion-card-header>
+    <ion-card-content>
+        <p>The content for this card</p>
+    <p>
+      Ticket:<strong class="price">${{event?.price}}</strong> / Free
+    </p>
+    <ion-button expand="block" color="primary" routerLink="/event-list">
+    Book
+  </ion-button>
+    </ion-card-content>
+</ion-card>
+
+  <!-- List -->
+  <ion-list>
+
+    <ion-list-header>
+      <ion-label>Your next events</ion-label>
+    </ion-list-header>
+
+    <ion-item 
+      tappable 
+      *ngFor="let event of eventList" 
+      routerLink="/event-detail/{{ event.id }}">
+      <ion-label>
+        <h2>{{event?.name}}</h2>
+        <p>Ticket:
+          <strong>${{event?.price}}</strong>
+        </p>
+        <p>Date:
+          <strong>{{event?.date}}</strong>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+<!-- List -->
+
+
+</ion-content>

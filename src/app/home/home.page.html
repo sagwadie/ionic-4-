@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>THE STATION</ion-title>
+    <ion-buttons slot="end">
+      <ion-button href="/profile">
+        <ion-icon slot="icon-only" name="person"></ion-icon>X
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  
+  <!-- Welcome-wrapper -->
+  <div class="welcome-wrapper" *ngIf="!no_Events">
+    <!--<img src="assets/img/logo-the-station.png">-->
+    <img src="https://firebasestorage.googleapis.com/v0/b/event-ee729.appspot.com/o/logo-the-station.png?alt=media&token=daf3eb07-a76b-4919-a76f-aba93726ae6f" class="logo">
+    
+    <h2 class="welcome-title">THE STATION</h2>
+    <p class="welcome-subtitle">
+      Where tech entrepreneurs and artists can come together in the first shared space for creative development in Baghdad.
+    </p>
+
+
+    
+  </div>
+  <!--
+    <p class="welcome-subtitle">
+      There's no Events Yet!
+    </p>
+  -->
+  <!-- /Welcome-wrapper -->
+
+
+
+
+  <ion-button expand="block" color="primary" routerLink="/event-list">
+    See your events
+  </ion-button>
+
+
+<!-- FABs (Floating Action Buttons) Create & Share a new Event -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button 
+    routerLink="/event-create"
+    title="Create & Share a startup idea"
+    tooltip="Create & Share a new business idea">
+    <ion-icon name="add"></ion-icon>Create a new Event
+  </ion-fab-button>
+</ion-fab>
+<!-- FABs (Floating Action Buttons) -->
+
+
+
+
+ 
+
+ 
+
+
+
+	
+
+
+
+</ion-content>
+
+
+
+
+
+
+<!-- This should be in its corresponding .scss file. I put it here just for simplicity. -->
+<style>
+  /* Not a web component, just an html element and part of the global CSS scope. */
+  button {
+    /* Notice how none of these styles get applied to the button.button-native inside the shadow-root of the <ion-button>, that's because that element is encapsulated.  */
+    display: block;
+    color: red;
+    background: grey !important; /* Won't be applied to button.button-native even if we use !important */
+    padding: 10px;
+  }
+
+  /* Part of the global CSS scope, not part of the shadow-dom encapsulation. Style as you would normaly do. */
+  ion-button.host-element {
+    display: block;
+    margin: 20px;
+
+    --background: red; /* This will work. --background css 4 variable is part of the 'public API' of the <ion-button> web component and we are re-defining its value in the same element it is originally defined. */
+  }
+
+  /* The button with class 'button-native' is inside the shadow-root, thus part of the encapsulated scope. */
+  ion-button.host-element button.button-native {
+    background: purple; /* This won't work. We can't redefine properties of the elements inside the shadow-root. */
+    --background: blue; /* This won't work. Although --background is the name of the css 4 variable that defines the background property, the <ion-button> web component defines it in the host element, not inside this element. */
+  }
+
+  /* Part of the global CSS scope. It's also used as a explicit child element of the <ion-button> web component, thus not part of the shadow-root encapsulation. */
+  span {
+    color: orange; /* We see the text inside the <ion-button> orange because the <span> is not inside the encapsulated shadow-root.  */
+  }
+</style>
